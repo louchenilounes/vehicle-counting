@@ -65,10 +65,12 @@ vehicle-counting/
 ## Documentation
 
 - [Step 0 — Project scope](docs/00_cadrage.md)
+- [Step 2 — Public data](docs/02_data.md)
 
 ## Data and licenses
 
-- Datasets (UA-DETRAC, BDD100K, Roboflow Universe) are **not** included in this repo. Only download and conversion scripts are provided.
+- Datasets (UA-DETRAC, Roboflow Universe) are **not** included in this repo. Only download and conversion scripts are provided.
+- UA-DETRAC: Wen et al., *UA-DETRAC: A New Benchmark and Protocol for Multi-Object Detection and Tracking*, CVIU 2020.
 - Live streams are processed in memory only. No raw video is stored or shared.
 
 ## License

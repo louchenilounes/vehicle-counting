@@ -1,0 +1,16 @@
+# Target classes (YOLO ids) and mapping from each source dataset.
+names:
+  0: car
+  1: truck
+  2: bus
+  3: van
+
+sources:
+  ua_detrac:
+    # source label -> target label
+    # null = not a target class: the box is masked in gray and removed
+    mapping:
+      car: car
+      bus: bus
+      van: van
+      others: truck   # to confirm with the visual check (sample_class_crops.py)

@@ -25,6 +25,28 @@ _Coming soon._
 | Baseline (COCO) | – | – | – | – |
 | Fine-tuned | – | – | – | – |
 
+## Installation
+
+Requirements: Python 3.10+ and Git.
+
+```bash
+git clone https://github.com/louchenilounes/vehicle-counting.git
+cd vehicle-counting
+python -m venv .venv
+# Windows: .venv\Scripts\Activate.ps1   |   Linux/macOS: source .venv/bin/activate
+pip install -r requirements.txt
+pip install -e ".[dev]"
+```
+
+Check the environment (runs YOLO on a sample image):
+
+```bash
+python scripts/check_env.py
+pytest
+```
+
+Training runs on Google Colab: see [`notebooks/00_colab_setup.ipynb`](notebooks/00_colab_setup.ipynb).
+
 ## Project structure
 
 ```

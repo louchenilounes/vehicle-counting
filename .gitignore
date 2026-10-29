@@ -1,0 +1,46 @@
+# ---- Data (never pushed) ----
+data/*
+!data/.gitkeep
+
+# ---- Model weights and exports ----
+*.pt
+*.pth
+*.onnx
+*.engine
+*_openvino_model/
+weights/
+models/*
+!models/.gitkeep
+
+# ---- Training outputs ----
+runs/
+wandb/
+mlruns/
+
+# ---- Videos and images (except docs assets) ----
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.ts
+*.m3u8
+outputs/
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# ---- Environments ----
+.venv/
+venv/
+env/
+.env
+
+# ---- IDE / OS ----
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

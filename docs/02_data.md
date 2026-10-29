@@ -30,9 +30,45 @@ The mapping from each source is defined in [`configs/classes.yaml`](../configs/c
 Code: [`src/vehicle_counter/data/detrac.py`](../src/vehicle_counter/data/detrac.py), tested in [`tests/test_convert.py`](../tests/test_convert.py).
 Notebook: [`notebooks/01_data_preparation.ipynb`](../notebooks/01_data_preparation.ipynb).
 
-## Results
+## Results — UA-DETRAC (Step 2A)
 
-_To be filled with the real output of `scripts/dataset_stats.py`._
+Output of `scripts/convert_detrac.py` and `scripts/dataset_stats.py` (1 frame out of 10, run on Colab):
+
+- **100 / 100 sequences**, **13,857 images** (960x540), **123,069 boxes**
+- 0 missing image, 0 label error, 0 unknown source label
+- 18 images with no vehicle (0.13%) — kept as background images
+- Size: 1.6 GB (stored on Google Drive as `ua_detrac_step10.zip`, not in this repo)
+
+### Boxes per class
+
+| Class | Boxes | Share | Images with this class |
+|-------|------:|------:|------:|
+| car | 101,976 | 82.86% | 13,667 |
+| truck | 1,997 | **1.62%** | 1,899 |
+| bus | 9,894 | 8.04% | 5,403 |
+| van | 9,202 | 7.48% | 5,869 |
+
+### Images per weather
+
+| Weather | Images | Sequences |
+|---------|-------:|----------:|
+| cloudy | 4,484 | 30 |
+| night | 4,142 | 28 |
+| rainy | 2,653 | 19 |
+| sunny | 2,578 | 23 |
+
+### Visual checks
+
+- **`others` → `truck` confirmed** on 100 random crops (side ≥ 40 px, 19,625 candidate boxes in 48 sequences): box trucks, dump trucks, mixers, tow trucks. No cars, motorbikes or people.
+- **Low truck diversity:** the same police tow truck appears in about 25 of the 100 crops. Many truck boxes come from a few vehicles seen in many frames.
+- **`van`** (69,916 candidate boxes in 87 sequences): minibuses, small vans and MPVs. Some MPVs look like cars → car/van confusion is expected and will be measured in Step 7.
+- **Preview of 20 random converted images:** boxes are well placed, classes are plausible, ignored regions are masked. Pedestrians and two-wheelers are not labeled (out of scope).
+
+### Known issues
+
+1. **Strong class imbalance:** about 51 cars for 1 truck. Trucks are also not diverse. → Extra truck data is needed (Step 2B, Roboflow Universe).
+2. **Some vehicles cut by the image border are not annotated** in UA-DETRAC (seen in the preview). Rare; kept as is.
+3. **Car/van ambiguity** (MPVs labeled as `van`).
 
 ## Citation
 
